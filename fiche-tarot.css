@@ -1,0 +1,204 @@
+body {
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #eae6d5;
+  padding-top: 80px;
+}
+
+@keyframes goldFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.gold-gradient {
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+}
+
+.fiche-container {
+  position: relative;
+  width: 400px;
+  background: #111111;
+  border-radius: 20px;
+  text-align: center;
+  overflow: visible;
+  padding: 2px;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+}
+
+.fiche-inner {
+  background: #111111;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 60px;
+}
+
+.fiche-container.gold-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fiche-image-wrapper {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  padding: 4px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.fiche-image-wrapper.gold-gradient {
+  border: 3px solid transparent;
+}
+
+.fiche-image-wrapper.gold-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fiche-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.fiche-content {
+  padding: 20px;
+  position: relative;
+}
+
+.fiche-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.fiche-line::before,
+.fiche-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+  margin: 0 10px;
+}
+
+.fiche-line span {
+  font-size: 20px;
+  display: inline-block;
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fiche-text {
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #eae6d5;
+  font-family: 'Inter', sans-serif;
+}
+
+.fiche-separator {
+  margin: 30px 0 10px;
+  height: 1px;
+  background: linear-gradient(270deg, #FFD700, #FFA500, #FFD700);
+  background-size: 400% 400%;
+  animation: goldFlow 5s linear infinite;
+  border: none;
+}
+
+.fiche-title {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #eae6d5;
+}
+
+.credit-icon-link {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.credit-icon-link img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.fiche-container:hover .credit-icon-link {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* -------- CSS pour <b>, <i> et <u> -------- */
+.fiche-text b {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.fiche-text i {
+  color: #FFD700;
+  font-style: italic;
+}
+
+.fiche-text u {
+  background: #FFD700;
+  color: #111111;
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
